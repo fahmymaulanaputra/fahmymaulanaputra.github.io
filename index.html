@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Professional portfolio of Fahmy Maulana Putra, System Engineer, Network Engineer and IT Infrastructure Engineer with 12+ years of IT experience.">
+
+    <meta name="author" content="Fahmy Maulana Putra">
+
+    <meta name="keywords"
+        content="Fahmy Maulana Putra, System Engineer, Network Engineer, IT Infrastructure Engineer, Network Infrastructure, Server, Storage, Virtualization, Network Security">
+
+    <title>Fahmy Maulana Putra | IT & Network Infrastructure Professional</title>
+
+    <style>
+        :root {
+            --bg: #0b1120;
+            --bg-secondary: #111827;
+            --card: #172033;
+            --card-hover: #1d2940;
+            --text: #e5e7eb;
+            --text-secondary: #9ca3af;
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --border: rgba(148, 163, 184, 0.18);
+            --white: #ffffff;
+            --max-width: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(92%, var(--max-width));
+            margin: 0 auto;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 17, 32, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: calc(100vh - 72px);
+            display: flex;
+            align-items: center;
+            padding: 100px 0;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(56, 189, 248, 0.10),
+                    transparent 35%
+                );
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-title {
+            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            max-width: 760px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.25s ease;
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #06111d;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            background: linear-gradient(
+                145deg,
+                rgba(23, 32, 51, 0.95),
+                rgba(17, 24, 39, 0.95)
+            );
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-card-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .quick-info {
+            display: grid;
+            gap: 18px;
+        }
+
+        .quick-info-item {
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-info-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .quick-info-value {
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           GENERAL SECTION
+        ========================== */
+
+        section {
+            padding: 100px 0;
+            scroll-margin-top: 72px;
+        }
+
+        section:nth-child(even) {
+            background: rgba(17, 24, 39, 0.45);
+        }
+
+        .section-heading {
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            max-width: 750px;
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 45px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+        }
+
+        .about-highlight {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .about-highlight h3 {
+            margin-bottom: 20px;
+        }
+
+        .highlight-list {
+            list-style: none;
+        }
+
+        .highlight-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 13px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================== */
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 42px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--bg);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.25s ease;
+        }
+
+        .timeline-card:hover {
+            background: var(--card-hover);
+            transform: translateX(4px);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .timeline-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 4px;
+        }
+
+        .company {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .responsibilities {
+            list-style: none;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .responsibilities li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.25s ease;
+        }
+
+        .skill-card:hover {
+            background: var(--card-hover);
+            transform: translateY(-3px);
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            list-style: none;
+        }
+
+        .skill-list li {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+            color: #cbd5e1;
+            padding: 7px 11px;
+            border-radius: 7px;
+            font-size: 0.88rem;
+        }
+
+        /* =========================
+           TECHNICAL ACTIVITIES / PROJECTS
+        ========================== */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.25s ease;
+        }
+
+        .project-card:hover {
+            background: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .project-number {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .project-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        /* =========================
+           CERTIFICATIONS
+        ========================== */
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .cert-card h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .education-card {
+            max-width: 900px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .education-date {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.88rem;
+            margin-bottom: 5px;
+        }
+
+        .education-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .education-card p {
+            color: var(--text-secondary);
+        }
+
+        /* =========================
+           CV
+        ========================== */
+
+        .cv-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(56, 189, 248, 0.12),
+                    rgba(23, 32, 51, 0.95)
+                );
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 45px;
+            text-align: center;
+        }
+
+        .cv-box h2 {
+            margin-bottom: 12px;
+        }
+
+        .cv-box p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 45px;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 18px;
+        }
+
+        .contact-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .contact-item span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contact-item a {
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        .contact-message {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .contact-message h3 {
+            margin-bottom: 15px;
+        }
+
+        .contact-message p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 950px) {
+
+            .nav-container {
+                flex-direction: column;
+                padding: 16px 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .hero {
+                padding-top: 70px;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            section {
+                padding: 70px 0;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .skills-grid,
+            .cert-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                padding: 24px;
+            }
+
+            .cv-box {
+                padding: 30px 20px;
+            }
+
+            .timeline-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+                Fahmy <span>Maulana Putra</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="container hero-grid">
+
+                <div>
+
+                    <div class="eyebrow">
+                        IT & Network Infrastructure Professional
+                    </div>
+
+                    <h1>
+                        Fahmy <span>Maulana Putra</span>
+                    </h1>
+
+                    <div class="hero-title">
+                        System Engineer | Network Engineer | IT Infrastructure Engineer
+                    </div>
+
+                    <p class="hero-description">
+                        IT technical professional with 12+ years of experience
+                        supporting network and IT infrastructure activities,
+                        including network topology design, device quality assessment,
+                        device design and testing, technical documentation,
+                        preventive and corrective maintenance, configuration tuning,
+                        and technical infrastructure support.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#experience" class="btn btn-primary">
+                            View Experience
+                        </a>
+
+                        <a href="#contact" class="btn btn-secondary">
+                            Contact Me
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card">
+
+                    <div class="hero-card-title">
+                        Professional Profile
+                    </div>
+
+                    <div class="quick-info">
+
+                        <div class="quick-info-item">
+                            <div class="quick-info-label">
+                                Experience
+                            </div>
+
+                            <div class="quick-info-value">
+                                12+ Years of IT Experience
+                            </div>
+                        </div>
+
+                        <div class="quick-info-item">
+                            <div class="quick-info-label">
+                                Primary Focus
+                            </div>
+
+                            <div class="quick-info-value">
+                                Network & IT Infrastructure
+                            </div>
+                        </div>
+
+                        <div class="quick-info-item">
+                            <div class="quick-info-label">
+                                Core Areas
+                            </div>
+
+                            <div class="quick-info-value">
+                                Networking, Server, Storage & Security
+                            </div>
+                        </div>
+
+                        <div class="quick-info-item">
+                            <div class="quick-info-label">
+                                Location
+                            </div>
+
+                            <div class="quick-info-value">
+                                Surabaya, East Java, Indonesia
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        About Me
+                    </div>
+
+                    <h2>
+                        IT & Infrastructure Professional
+                    </h2>
+
+                    <p>
+                        Technical experience across network and infrastructure
+                        implementation, validation, maintenance and technical support.
+                    </p>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-text">
+
+                        <p>
+                            I am a System Engineer and IT technical professional
+                            with more than 12 years of experience supporting
+                            network and IT infrastructure activities.
+                        </p>
+
+                        <p>
+                            My experience includes network topology design,
+                            technical scenario design, device quality assessment,
+                            device design and testing, device configuration,
+                            technical documentation, preventive and corrective
+                            maintenance, configuration tuning, and technical
+                            troubleshooting.
+                        </p>
+
+                        <p>
+                            I have also worked with server and storage infrastructure,
+                            virtual machine environments, backup and replication,
+                            and network security environments.
+                        </p>
+
+                        <p>
+                            In addition to technical implementation, I have experience
+                            supporting technical solution design, product evaluation,
+                            product comparison, Bill of Materials preparation,
+                            and technical product recommendations based on
+                            requirements and budget considerations.
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-highlight">
+
+                        <h3>
+                            Professional Strengths
+                        </h3>
+
+                        <ul class="highlight-list">
+
+                            <li>
+                                Network Infrastructure
+                            </li>
+
+                            <li>
+                                Technical Solution Design
+                            </li>
+
+                            <li>
+                                Device Testing & Validation
+                            </li>
+
+                            <li>
+                                Infrastructure Troubleshooting
+                            </li>
+
+                            <li>
+                                Technical Documentation
+                            </li>
+
+                            <li>
+                                Preventive & Corrective Maintenance
+                            </li>
+
+                            <li>
+                                Product Evaluation & Comparison
+                            </li>
+
+                            <li>
+                                Problem Solving & Collaboration
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
+
+        <section id="experience">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Professional Experience
+                    </div>
+
+                    <h2>
+                        Career Experience
+                    </h2>
+
+                    <p>
+                        Professional experience in technical support,
+                        system engineering, network infrastructure and
+                        infrastructure solution activities.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline">
+
+                    <!-- EXPERIENCE 1 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-card">
+
+                            <div class="timeline-date">
+                                Aug 2014 – Jan 2019
+                            </div>
+
+                            <h3>
+                                Technical Staff
+                            </h3>
+
+                            <div class="company">
+                                Wahana Ciptasinatria
+                            </div>
+
+                            <ul class="responsibilities">
+
+                                <li>
+                                    Assisted in designing technical scenarios
+                                    and network topology.
+                                </li>
+
+                                <li>
+                                    Performed device quality checking prior
+                                    to implementation.
+                                </li>
+
+                                <li>
+                                    Supported device design and testing activities.
+                                </li>
+
+                                <li>
+                                    Prepared technical documentation.
+                                </li>
+
+                                <li>
+                                    Performed preventive and corrective maintenance.
+                                </li>
+
+                                <li>
+                                    Supported configuration tuning and
+                                    technical implementation activities.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE 2 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-card">
+
+                            <div class="timeline-date">
+                                Feb 2019 – Mar 2026
+                            </div>
+
+                            <h3>
+                                System Engineer
+                            </h3>
+
+                            <div class="company">
+                                Wahana Supra Sinergi
+                            </div>
+
+                            <ul class="responsibilities">
+
+                                <li>
+                                    Assisted in designing technical scenarios
+                                    and network topology for infrastructure
+                                    implementation.
+                                </li>
+
+                                <li>
+                                    Performed device quality checking prior
+                                    to implementation.
+                                </li>
+
+                                <li>
+                                    Supported device design, configuration,
+                                    testing, and validation.
+                                </li>
+
+                                <li>
+                                    Prepared technical documentation for
+                                    implementation and infrastructure activities.
+                                </li>
+
+                                <li>
+                                    Performed preventive and corrective maintenance.
+                                </li>
+
+                                <li>
+                                    Performed configuration tuning to support
+                                    infrastructure performance and operational
+                                    requirements.
+                                </li>
+
+                                <li>
+                                    Supported technical troubleshooting and
+                                    infrastructure-related activities.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE 3 -->
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="timeline-card">
+
+                            <div class="timeline-date">
+                                May 2026 – Aug 2026
+                            </div>
+
+                            <h3>
+                                Technical Engineer
+                            </h3>
+
+                            <div class="company">
+                                Top Utama Solusindo
+                            </div>
+
+                            <ul class="responsibilities">
+
+                                <li>
+                                    Prepared Bill of Materials (BoM) based on
+                                    customer, partner and sales requirements.
+                                </li>
+
+                                <li>
+                                    Provided technical support and product
+                                    consultation to partners.
+                                </li>
+
+                                <li>
+                                    Evaluated and recommended alternative
+                                    networking and infrastructure devices
+                                    based on technical requirements and
+                                    budget constraints.
+                                </li>
+
+                                <li>
+                                    Compared product specifications and
+                                    identified technically equivalent or
+                                    suitable devices from different vendors.
+                                </li>
+
+                                <li>
+                                    Supported technical solution design and
+                                    product selection for infrastructure
+                                    requirements.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TECHNICAL SKILLS
+        ========================== -->
+
+        <section id="skills">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Technical Skills
+                    </div>
+
+                    <h2>
+                        Technical Expertise
+                    </h2>
+
+                    <p>
+                        Core technical capabilities based on professional
+                        experience and infrastructure activities.
+                    </p>
+
+                </div>
+
+
+                <div class="skills-grid">
+
+                    <!-- NETWORK -->
+
+                    <div class="skill-card">
+
+                        <h3>
+                            Network Infrastructure
+                        </h3>
+
+                        <ul class="skill-list">
+
+                            <li>Networking</li>
+
+                            <li>Network Topology Design</li>
+
+                            <li>Network Device Configuration</li>
+
+                            <li>Device Testing & Validation</li>
+
+                            <li>Network Troubleshooting</li>
+
+                            <li>Preventive & Corrective Maintenance</li>
+
+                            <li>Configuration Tuning</li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- SYSTEM -->
+
+                    <div class="skill-card">
+
+                        <h3>
+                            Systems & Infrastructure
+                        </h3>
+
+                        <ul class="skill-list">
+
+                            <li>Server & Storage</li>
+
+                            <li>Virtual Machine</li>
+
+                            <li>Backup & Replication</li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- SECURITY -->
+
+                    <div class="skill-card">
+
+                        <h3>
+                            Security
+                        </h3>
+
+                        <ul class="skill-list">
+
+                            <li>Firewall</li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- DOCUMENTATION -->
+
+                    <div class="skill-card">
+
+                        <h3>
+                            Documentation & Productivity
+                        </h3>
+
+                        <ul class="skill-list">
+
+                            <li>Technical Documentation</li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- PROFESSIONAL -->
+
+                    <div class="skill-card">
+
+                        <h3>
+                            Professional Skills
+                        </h3>
+
+                        <ul class="skill-list">
+
+                            <li>Problem Solving</li>
+
+                            <li>Collaboration</li>
+
+                            <li>Teamwork</li>
+
+                            <li>Adaptability</li>
+
+                            <li>Flexibility</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS / TECHNICAL ACTIVITIES
+        ========================== -->
+
+        <section id="projects">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Projects & Technical Activities
+                    </div>
+
+                    <h2>
+                        Technical Work Areas
+                    </h2>
+
+                    <p>
+                        Selected technical activities derived from professional
+                        experience in network and IT infrastructure.
+                    </p>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+                    <div class="project-card">
+
+                        <div class="project-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Network Topology & Technical Scenario Design
+                        </h3>
+
+                        <p>
+                            Supported the design of technical scenarios and
+                            network topology for infrastructure implementation
+                            and operational requirements.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Device Testing & Validation
+                        </h3>
+
+                        <p>
+                            Performed device quality checking, design,
+                            configuration, testing and validation before
+                            infrastructure implementation.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Infrastructure Maintenance
+                        </h3>
+
+                        <p>
+                            Supported preventive and corrective maintenance,
+                            troubleshooting and configuration tuning for
+                            infrastructure environments.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Technical Documentation
+                        </h3>
+
+                        <p>
+                            Prepared technical documentation supporting
+                            infrastructure implementation and technical
+                            activities.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Product Evaluation & Comparison
+                        </h3>
+
+                        <p>
+                            Evaluated networking and infrastructure products,
+                            compared specifications and identified technically
+                            suitable alternatives from different vendors.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-number">
+                            06
+                        </div>
+
+                        <h3>
+                            Technical Solution & BoM Support
+                        </h3>
+
+                        <p>
+                            Supported technical solution design, product
+                            selection and Bill of Materials preparation based
+                            on customer, partner and sales requirements.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CERTIFICATIONS
+        ========================== -->
+
+        <section id="certifications">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Certifications
+                    </div>
+
+                    <h2>
+                        Professional Certifications
+                    </h2>
+
+                    <p>
+                        Certifications covering network security, cabling,
+                        server infrastructure and enterprise networking.
+                    </p>
+
+                </div>
+
+
+                <div class="cert-grid">
+
+                    <div class="cert-card">
+
+                        <h3>
+                            Fortinet Certifications
+                        </h3>
+
+                        <p>
+                            Network Security Associate 1 & 2
+                        </p>
+
+                    </div>
+
+
+                    <div class="cert-card">
+
+                        <h3>
+                            Furukawa Electric Certifications
+                        </h3>
+
+                        <p>
+                            Cabling System
+                        </p>
+
+                    </div>
+
+
+                    <div class="cert-card">
+
+                        <h3>
+                            xFusion Certifications
+                        </h3>
+
+                        <p>
+                            xFusion Server (FCIA)
+                        </p>
+
+                    </div>
+
+
+                    <div class="cert-card">
+
+                        <h3>
+                            H3C Certifications
+                        </h3>
+
+                        <p>
+                            HSE Industry L1 Generalist,
+                            HSE Industry L2 Specialist,
+                            HSE Industry L3 Expert,
+                            HSE Industry CT L2 Specialist
+                            and H3C Service.
+                        </p>
+
+                    </div>
+
+
+                    <div class="cert-card">
+
+                        <h3>
+                            Ruijie Certifications
+                        </h3>
+
+                        <p>
+                            RCNA R&amp;S and RCNA WLAN
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EDUCATION
+        ========================== -->
+
+        <section id="education">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Education
+                    </div>
+
+                    <h2>
+                        Academic Background
+                    </h2>
+
+                </div>
+
+
+                <div class="education-card">
+
+                    <div class="education-date">
+                        Aug 2012 – Dec 2016
+                    </div>
+
+                    <h3>
+                        Bachelor of Computer Science
+                    </h3>
+
+                    <p>
+                        Universitas Pembangunan Nasional Veteran Jawa Timur
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CV
+        ========================== -->
+
+        <section id="cv">
+
+            <div class="container">
+
+                <div class="cv-box">
+
+                    <div class="section-label">
+                        Curriculum Vitae
+                    </div>
+
+                    <h2>
+                        Professional CV
+                    </h2>
+
+                    <p>
+                        For a complete overview of professional experience,
+                        technical skills, certifications and education,
+                        please refer to the professional CV.
+                    </p>
+
+                    <!--
+                        If you upload your CV PDF to the repository,
+                        replace the href below with the actual filename.
+
+                        Example:
+                        href="Fahmy-Maulana-Putra-CV.pdf"
+                    -->
+
+                    <a href="#contact" class="btn btn-primary">
+                        Request CV
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Contact
+                    </div>
+
+                    <h2>
+                        Let's Connect
+                    </h2>
+
+                    <p>
+                        For professional opportunities, technical discussions,
+                        networking and IT infrastructure related collaboration.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+                    <div class="contact-info">
+
+                        <div class="contact-item">
+
+                            <span>
+                                Location
+                            </span>
+
+                            <div>
+                                Surabaya, East Java, Indonesia
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                Email
+                            </span>
+
+                            <a href="mailto:fahmymaulanaputra@gmail.com">
+                                fahmymaulanaputra@gmail.com
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                Phone
+                            </span>
+
+                            <a href="tel:+6281317680317">
+                                +62 813-1768-0317
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                LinkedIn
+                            </span>
+
+                            <a
+                                href="https://www.linkedin.com/in/fahmy-maulana-putra-04160043/"
+                                target="_blank"
+                                rel="noopener noreferrer">
+
+                                LinkedIn Profile
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-message">
+
+                        <h3>
+                            Professional Profile
+                        </h3>
+
+                        <p>
+                            System Engineer and IT technical professional
+                            with experience across network infrastructure,
+                            systems and infrastructure, technical validation,
+                            maintenance, documentation and technical solution
+                            support.
+                        </p>
+
+                        <p>
+                            Experienced in working with infrastructure
+                            requirements, device evaluation, technical
+                            product comparison and infrastructure implementation
+                            support.
+                        </p>
+
+                        <a
+                            href="mailto:fahmymaulanaputra@gmail.com"
+                            class="btn btn-primary">
+
+                            Send Email
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © 2026 Fahmy Maulana Putra.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
