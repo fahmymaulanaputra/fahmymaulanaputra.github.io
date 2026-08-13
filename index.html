@@ -6,9 +6,7 @@
 
     <meta name="description"
         content="Professional portfolio of Fahmy Maulana Putra, System Engineer, Network Engineer and IT Infrastructure Engineer with 12+ years of IT experience.">
-
     <meta name="author" content="Fahmy Maulana Putra">
-
     <meta name="keywords"
         content="Fahmy Maulana Putra, System Engineer, Network Engineer, IT Infrastructure Engineer, Network Infrastructure, Server, Storage, Virtualization, Network Security">
 
@@ -16,15 +14,19 @@
 
     <style>
         :root {
-            --bg: #0b1120;
-            --bg-secondary: #111827;
-            --card: #172033;
-            --card-hover: #1d2940;
-            --text: #e5e7eb;
-            --text-secondary: #9ca3af;
-            --primary: #38bdf8;
-            --primary-dark: #0284c7;
-            --border: rgba(148, 163, 184, 0.18);
+            /* Palette Modern Tech / Cyberpunk Clean */
+            --bg: #090d16;
+            --bg-secondary: #0f172a;
+            --card: #1e293b;
+            --card-hover: #334155;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --primary: #38bdf8;          /* Bright Cyan */
+            --primary-glow: rgba(56, 189, 248, 0.35);
+            --accent: #818cf8;           /* Indigo Accent */
+            --accent-glow: rgba(129, 140, 248, 0.35);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(56, 189, 248, 0.4);
             --white: #ffffff;
             --max-width: 1180px;
         }
@@ -40,27 +42,16 @@
         }
 
         body {
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Arial,
-                sans-serif;
-
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
         a {
             color: inherit;
             text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
         }
 
         .container {
@@ -69,16 +60,35 @@
         }
 
         /* =========================
+           ANIMATION & REVEAL CLASSES
+        ========================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
            NAVIGATION
         ========================== */
-
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(11, 17, 32, 0.94);
-            backdrop-filter: blur(12px);
+            background: rgba(9, 13, 22, 0.75);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(9, 13, 22, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -94,10 +104,12 @@
             font-weight: 700;
             letter-spacing: 0.3px;
             white-space: nowrap;
+            position: relative;
         }
 
         .logo span {
             color: var(--primary);
+            text-shadow: 0 0 12px var(--primary-glow);
         }
 
         .nav-links {
@@ -110,59 +122,83 @@
         .nav-links a {
             color: var(--text-secondary);
             font-size: 0.92rem;
-            transition: 0.25s ease;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            position: relative;
+            padding: 4px 0;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         /* =========================
            HERO
         ========================== */
-
         .hero {
             min-height: calc(100vh - 72px);
             display: flex;
             align-items: center;
-            padding: 100px 0;
-            background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(56, 189, 248, 0.10),
-                    transparent 35%
-                );
+            padding: 80px 0;
+            background: 
+                radial-gradient(circle at 80% 20%, var(--primary-glow), transparent 40%),
+                radial-gradient(circle at 20% 80%, var(--accent-glow), transparent 40%);
         }
 
         .hero-grid {
             display: grid;
             grid-template-columns: 1.4fr 0.6fr;
-            gap: 70px;
+            gap: 60px;
             align-items: center;
         }
 
         .eyebrow {
             color: var(--primary);
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-size: 0.85rem;
             margin-bottom: 18px;
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.08;
-            letter-spacing: -2px;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
             margin-bottom: 20px;
         }
 
         .hero h1 span {
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-title {
-            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
             color: var(--text-secondary);
             margin-bottom: 25px;
             font-weight: 500;
@@ -178,59 +214,80 @@
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
+            gap: 16px;
         }
 
+        /* =========================
+           BUTTONS & HOVER EFFECTS
+        ========================== */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 22px;
-            border-radius: 8px;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 10px;
             font-weight: 600;
-            transition: 0.25s ease;
-            border: 1px solid var(--border);
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: #06111d;
-            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: #040914;
+            box-shadow: 0 4px 20px var(--primary-glow);
         }
 
         .btn-primary:hover {
-            background: #7dd3fc;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(56, 189, 248, 0.5);
+            background: linear-gradient(135deg, #7dd3fc, var(--primary));
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.03);
             color: var(--text);
+            border-color: var(--border);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background: var(--card);
+            background: rgba(255, 255, 255, 0.08);
             border-color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
+        /* =========================
+           HERO CARD
+        ========================== */
         .hero-card {
-            background: linear-gradient(
-                145deg,
-                rgba(23, 32, 51, 0.95),
-                rgba(17, 24, 39, 0.95)
-            );
-
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
             border: 1px solid var(--border);
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hero-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-5px);
         }
 
         .hero-card-title {
             color: var(--primary);
             font-weight: 700;
             margin-bottom: 22px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .quick-info {
@@ -250,7 +307,7 @@
 
         .quick-info-label {
             color: var(--text-secondary);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -258,19 +315,20 @@
         .quick-info-value {
             margin-top: 4px;
             font-weight: 600;
+            color: var(--text);
         }
 
         /* =========================
-           GENERAL SECTION
+           SECTIONS GENERAL
         ========================== */
-
         section {
             padding: 100px 0;
             scroll-margin-top: 72px;
+            position: relative;
         }
 
         section:nth-child(even) {
-            background: rgba(17, 24, 39, 0.45);
+            background: var(--bg-secondary);
         }
 
         .section-heading {
@@ -282,12 +340,12 @@
             font-size: 0.82rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             margin-bottom: 10px;
         }
 
         .section-heading h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
             line-height: 1.15;
             margin-bottom: 15px;
         }
@@ -295,12 +353,12 @@
         .section-heading p {
             max-width: 750px;
             color: var(--text-secondary);
+            font-size: 1.05rem;
         }
 
         /* =========================
            ABOUT
         ========================== */
-
         .about-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -310,17 +368,20 @@
         .about-text p {
             color: var(--text-secondary);
             margin-bottom: 18px;
+            font-size: 1.02rem;
         }
 
         .about-highlight {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .about-highlight h3 {
             margin-bottom: 20px;
+            color: var(--text);
         }
 
         .highlight-list {
@@ -329,23 +390,22 @@
 
         .highlight-list li {
             position: relative;
-            padding-left: 22px;
-            margin-bottom: 13px;
+            padding-left: 24px;
+            margin-bottom: 14px;
             color: var(--text-secondary);
         }
 
         .highlight-list li::before {
-            content: "•";
+            content: "✦";
             position: absolute;
             left: 0;
             color: var(--primary);
-            font-weight: 900;
+            font-size: 0.8rem;
         }
 
         /* =========================
-           EXPERIENCE
+           EXPERIENCE TIMELINE
         ========================== */
-
         .timeline {
             position: relative;
             max-width: 1000px;
@@ -355,16 +415,16 @@
             content: "";
             position: absolute;
             left: 8px;
-            top: 5px;
-            bottom: 5px;
+            top: 10px;
+            bottom: 10px;
             width: 2px;
-            background: var(--border);
+            background: linear-gradient(to bottom, var(--primary), var(--accent), transparent);
         }
 
         .timeline-item {
             position: relative;
             padding-left: 42px;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .timeline-item:last-child {
@@ -374,44 +434,47 @@
         .timeline-dot {
             position: absolute;
             left: 0;
-            top: 7px;
+            top: 6px;
             width: 18px;
             height: 18px;
             border-radius: 50%;
             background: var(--primary);
             border: 4px solid var(--bg);
-            box-shadow: 0 0 0 2px var(--primary);
+            box-shadow: 0 0 12px var(--primary);
         }
 
         .timeline-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 28px;
-            transition: 0.25s ease;
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
         }
 
         .timeline-card:hover {
-            background: var(--card-hover);
-            transform: translateX(4px);
+            border-color: var(--border-hover);
+            transform: translateX(6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .timeline-date {
             color: var(--primary);
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            display: inline-block;
         }
 
         .timeline-card h3 {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             margin-bottom: 4px;
         }
 
         .company {
-            color: var(--text-secondary);
+            color: var(--accent);
             font-weight: 600;
             margin-bottom: 18px;
+            font-size: 0.95rem;
         }
 
         .responsibilities {
@@ -426,16 +489,16 @@
         }
 
         .responsibilities li::before {
-            content: "→";
+            content: "➔";
             position: absolute;
             left: 0;
             color: var(--primary);
+            font-size: 0.8rem;
         }
 
         /* =========================
            SKILLS
         ========================== */
-
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -445,26 +508,28 @@
         .skill-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 28px;
-            transition: 0.25s ease;
+            transition: all 0.3s ease;
         }
 
         .skill-card:hover {
-            background: var(--card-hover);
-            transform: translateY(-3px);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
         }
 
         .skill-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin-bottom: 20px;
-            color: var(--white);
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
         }
 
         .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 9px;
+            gap: 10px;
             list-style: none;
         }
 
@@ -472,15 +537,22 @@
             background: rgba(56, 189, 248, 0.08);
             border: 1px solid rgba(56, 189, 248, 0.18);
             color: #cbd5e1;
-            padding: 7px 11px;
-            border-radius: 7px;
+            padding: 8px 14px;
+            border-radius: 8px;
             font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .skill-list li:hover {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--white);
+            transform: scale(1.03);
         }
 
         /* =========================
-           TECHNICAL ACTIVITIES / PROJECTS
+           PROJECTS
         ========================== */
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -490,14 +562,17 @@
         .project-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 28px;
-            transition: 0.25s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
-            background: var(--card-hover);
-            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
 
         .project-number {
@@ -505,7 +580,7 @@
             font-size: 0.8rem;
             font-weight: 800;
             letter-spacing: 1px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .project-card h3 {
@@ -515,97 +590,82 @@
 
         .project-card p {
             color: var(--text-secondary);
-            font-size: 0.92rem;
+            font-size: 0.93rem;
+            flex-grow: 1;
         }
 
         /* =========================
-           CERTIFICATIONS
+           CERTIFICATIONS & EDUCATION
         ========================== */
-
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
-        .cert-card {
+        .cert-card, .education-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px;
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
         }
 
-        .cert-card h3 {
-            color: var(--primary);
-            font-size: 1rem;
+        .cert-card:hover, .education-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .cert-card h3, .education-card h3 {
+            color: var(--text);
+            font-size: 1.15rem;
             margin-bottom: 10px;
         }
 
-        .cert-card p {
+        .cert-card p, .education-card p {
             color: var(--text-secondary);
-            font-size: 0.93rem;
-        }
-
-        /* =========================
-           EDUCATION
-        ========================== */
-
-        .education-card {
-            max-width: 900px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 30px;
+            font-size: 0.95rem;
         }
 
         .education-date {
             color: var(--primary);
             font-weight: 700;
-            font-size: 0.88rem;
-            margin-bottom: 5px;
-        }
-
-        .education-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .education-card p {
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 6px;
         }
 
         /* =========================
-           CV
+           CV SECTION
         ========================== */
-
         .cv-box {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(56, 189, 248, 0.12),
-                    rgba(23, 32, 51, 0.95)
-                );
-
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.08));
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 45px;
+            border-radius: 20px;
+            padding: 50px 30px;
             text-align: center;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+
+        .cv-box:hover {
+            border-color: var(--primary);
         }
 
         .cv-box h2 {
             margin-bottom: 12px;
+            font-size: 2rem;
         }
 
         .cv-box p {
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 25px;
+            max-width: 650px;
+            margin: 0 auto 28px;
+            font-size: 1.05rem;
         }
 
         /* =========================
            CONTACT
         ========================== */
-
         .contact-grid {
             display: grid;
             grid-template-columns: 0.8fr 1.2fr;
@@ -620,21 +680,28 @@
         .contact-item {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--border-hover);
         }
 
         .contact-item span {
             display: block;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
+            color: var(--primary);
+            font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            font-weight: 700;
+            margin-bottom: 6px;
         }
 
-        .contact-item a {
+        .contact-item a, .contact-item p {
             color: var(--text);
+            font-weight: 500;
             word-break: break-word;
         }
 
@@ -645,37 +712,39 @@
         .contact-message {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .contact-message h3 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
 
         .contact-message p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         /* =========================
            FOOTER
         ========================== */
-
         footer {
-            padding: 30px 0;
+            padding: 35px 0;
             border-top: 1px solid var(--border);
             text-align: center;
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.88rem;
+            background: var(--bg);
         }
 
         /* =========================
            RESPONSIVE
         ========================== */
-
         @media (max-width: 950px) {
-
             .nav-container {
                 flex-direction: column;
                 padding: 16px 0;
@@ -687,13 +756,7 @@
                 gap: 14px;
             }
 
-            .hero {
-                padding-top: 70px;
-            }
-
-            .hero-grid,
-            .about-grid,
-            .contact-grid {
+            .hero-grid, .about-grid, .contact-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -703,22 +766,11 @@
         }
 
         @media (max-width: 700px) {
-
             section {
                 padding: 70px 0;
             }
 
-            .hero {
-                min-height: auto;
-            }
-
-            .hero h1 {
-                letter-spacing: -1px;
-            }
-
-            .skills-grid,
-            .cert-grid,
-            .projects-grid {
+            .skills-grid, .cert-grid, .projects-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -727,11 +779,7 @@
             }
 
             .cv-box {
-                padding: 30px 20px;
-            }
-
-            .timeline-card {
-                padding: 22px;
+                padding: 35px 20px;
             }
         }
     </style>
@@ -742,10 +790,8 @@
     <!-- =========================
          NAVIGATION
     ========================== -->
-
-    <nav>
+    <nav id="navbar">
         <div class="container nav-container">
-
             <a href="#home" class="logo">
                 Fahmy <span>Maulana Putra</span>
             </a>
@@ -760,1068 +806,446 @@
                 <li><a href="#cv">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-
         </div>
     </nav>
 
-
     <!-- =========================
-         HERO
+         HERO SECTION
     ========================== -->
-
     <main>
-
         <section class="hero" id="home">
-
             <div class="container hero-grid">
-
-                <div>
-
-                    <div class="eyebrow">
-                        IT & Network Infrastructure Professional
-                    </div>
-
-                    <h1>
-                        Fahmy <span>Maulana Putra</span>
-                    </h1>
-
-                    <div class="hero-title">
-                        System Engineer | Network Engineer | IT Infrastructure Engineer
-                    </div>
-
+                <div class="reveal">
+                    <div class="eyebrow">IT & Network Infrastructure Professional</div>
+                    <h1>Fahmy <span>Maulana Putra</span></h1>
+                    <div class="hero-title">System Engineer | Network Engineer | IT Infrastructure Engineer</div>
                     <p class="hero-description">
-                        IT technical professional with 12+ years of experience
-                        supporting network and IT infrastructure activities,
-                        including network topology design, device quality assessment,
-                        device design and testing, technical documentation,
-                        preventive and corrective maintenance, configuration tuning,
-                        and technical infrastructure support.
+                        IT technical professional with 12+ years of experience supporting network and IT infrastructure activities, including network topology design, device quality assessment, device design and testing, technical documentation, preventive and corrective maintenance, configuration tuning, and technical infrastructure support.
                     </p>
 
+                    <!-- TOMBOL INTERAKTIF DI HERO -->
                     <div class="hero-buttons">
-
-                        <a href="#experience" class="btn btn-primary">
-                            View Experience
-                        </a>
-
-                        <a href="#contact" class="btn btn-secondary">
-                            Contact Me
-                        </a>
-
+                        <button class="btn btn-primary" onclick="scrollToSection('experience')">
+                            <span>View Experience</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+                        </button>
+                        <button class="btn btn-secondary" onclick="scrollToSection('contact')">
+                            <span>Contact Me</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
                     </div>
-
                 </div>
 
-
-                <div class="hero-card">
-
+                <div class="hero-card reveal">
                     <div class="hero-card-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         Professional Profile
                     </div>
-
                     <div class="quick-info">
-
                         <div class="quick-info-item">
-                            <div class="quick-info-label">
-                                Experience
-                            </div>
-
-                            <div class="quick-info-value">
-                                12+ Years of IT Experience
-                            </div>
+                            <div class="quick-info-label">Experience</div>
+                            <div class="quick-info-value">12+ Years of IT Experience</div>
                         </div>
-
                         <div class="quick-info-item">
-                            <div class="quick-info-label">
-                                Primary Focus
-                            </div>
-
-                            <div class="quick-info-value">
-                                Network & IT Infrastructure
-                            </div>
+                            <div class="quick-info-label">Primary Focus</div>
+                            <div class="quick-info-value">Network & IT Infrastructure</div>
                         </div>
-
                         <div class="quick-info-item">
-                            <div class="quick-info-label">
-                                Core Areas
-                            </div>
-
-                            <div class="quick-info-value">
-                                Networking, Server, Storage & Security
-                            </div>
+                            <div class="quick-info-label">Core Areas</div>
+                            <div class="quick-info-value">Networking, Server, Storage & Security</div>
                         </div>
-
                         <div class="quick-info-item">
-                            <div class="quick-info-label">
-                                Location
-                            </div>
-
-                            <div class="quick-info-value">
-                                Surabaya, East Java, Indonesia
-                            </div>
+                            <div class="quick-info-label">Location</div>
+                            <div class="quick-info-value">Surabaya, East Java, Indonesia</div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
              ABOUT
         ========================== -->
-
         <section id="about">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        About Me
-                    </div>
-
-                    <h2>
-                        IT & Infrastructure Professional
-                    </h2>
-
-                    <p>
-                        Technical experience across network and infrastructure
-                        implementation, validation, maintenance and technical support.
-                    </p>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">About Me</div>
+                    <h2>IT & Infrastructure Professional</h2>
+                    <p>Technical experience across network and infrastructure implementation, validation, maintenance and technical support.</p>
                 </div>
-
 
                 <div class="about-grid">
-
-                    <div class="about-text">
-
-                        <p>
-                            I am a System Engineer and IT technical professional
-                            with more than 12 years of experience supporting
-                            network and IT infrastructure activities.
-                        </p>
-
-                        <p>
-                            My experience includes network topology design,
-                            technical scenario design, device quality assessment,
-                            device design and testing, device configuration,
-                            technical documentation, preventive and corrective
-                            maintenance, configuration tuning, and technical
-                            troubleshooting.
-                        </p>
-
-                        <p>
-                            I have also worked with server and storage infrastructure,
-                            virtual machine environments, backup and replication,
-                            and network security environments.
-                        </p>
-
-                        <p>
-                            In addition to technical implementation, I have experience
-                            supporting technical solution design, product evaluation,
-                            product comparison, Bill of Materials preparation,
-                            and technical product recommendations based on
-                            requirements and budget considerations.
-                        </p>
-
+                    <div class="about-text reveal">
+                        <p>I am a System Engineer and IT technical professional with more than 12 years of experience supporting network and IT infrastructure activities.</p>
+                        <p>My experience includes network topology design, technical scenario design, device quality assessment, device design and testing, device configuration, technical documentation, preventive and corrective maintenance, configuration tuning, and technical troubleshooting.</p>
+                        <p>I have also worked with server and storage infrastructure, virtual machine environments, backup and replication, and network security environments.</p>
+                        <p>In addition to technical implementation, I have experience supporting technical solution design, product evaluation, product comparison, Bill of Materials preparation, and technical product recommendations based on requirements and budget considerations.</p>
                     </div>
 
-
-                    <div class="about-highlight">
-
-                        <h3>
-                            Professional Strengths
-                        </h3>
-
+                    <div class="about-highlight reveal">
+                        <h3>Professional Strengths</h3>
                         <ul class="highlight-list">
-
-                            <li>
-                                Network Infrastructure
-                            </li>
-
-                            <li>
-                                Technical Solution Design
-                            </li>
-
-                            <li>
-                                Device Testing & Validation
-                            </li>
-
-                            <li>
-                                Infrastructure Troubleshooting
-                            </li>
-
-                            <li>
-                                Technical Documentation
-                            </li>
-
-                            <li>
-                                Preventive & Corrective Maintenance
-                            </li>
-
-                            <li>
-                                Product Evaluation & Comparison
-                            </li>
-
-                            <li>
-                                Problem Solving & Collaboration
-                            </li>
-
+                            <li>Network Infrastructure</li>
+                            <li>Technical Solution Design</li>
+                            <li>Device Testing & Validation</li>
+                            <li>Infrastructure Troubleshooting</li>
+                            <li>Technical Documentation</li>
+                            <li>Preventive & Corrective Maintenance</li>
+                            <li>Product Evaluation & Comparison</li>
+                            <li>Problem Solving & Collaboration</li>
                         </ul>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
              EXPERIENCE
         ========================== -->
-
         <section id="experience">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        Professional Experience
-                    </div>
-
-                    <h2>
-                        Career Experience
-                    </h2>
-
-                    <p>
-                        Professional experience in technical support,
-                        system engineering, network infrastructure and
-                        infrastructure solution activities.
-                    </p>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">Professional Experience</div>
+                    <h2>Career Experience</h2>
+                    <p>Professional experience in technical support, system engineering, network infrastructure and infrastructure solution activities.</p>
                 </div>
-
 
                 <div class="timeline">
-
-                    <!-- EXPERIENCE 1 -->
-
-                    <div class="timeline-item">
-
+                    <!-- EXP 1 -->
+                    <div class="timeline-item reveal">
                         <div class="timeline-dot"></div>
-
                         <div class="timeline-card">
-
-                            <div class="timeline-date">
-                                Aug 2014 – Jan 2019
-                            </div>
-
-                            <h3>
-                                Technical Staff
-                            </h3>
-
-                            <div class="company">
-                                Wahana Ciptasinatria
-                            </div>
-
+                            <span class="timeline-date">Aug 2014 – Jan 2019</span>
+                            <h3>Technical Staff</h3>
+                            <div class="company">Wahana Ciptasinatria</div>
                             <ul class="responsibilities">
-
-                                <li>
-                                    Assisted in designing technical scenarios
-                                    and network topology.
-                                </li>
-
-                                <li>
-                                    Performed device quality checking prior
-                                    to implementation.
-                                </li>
-
-                                <li>
-                                    Supported device design and testing activities.
-                                </li>
-
-                                <li>
-                                    Prepared technical documentation.
-                                </li>
-
-                                <li>
-                                    Performed preventive and corrective maintenance.
-                                </li>
-
-                                <li>
-                                    Supported configuration tuning and
-                                    technical implementation activities.
-                                </li>
-
+                                <li>Assisted in designing technical scenarios and network topology.</li>
+                                <li>Performed device quality checking prior to implementation.</li>
+                                <li>Supported device design and testing activities.</li>
+                                <li>Prepared technical documentation.</li>
+                                <li>Performed preventive and corrective maintenance.</li>
+                                <li>Supported configuration tuning and technical implementation activities.</li>
                             </ul>
-
                         </div>
-
                     </div>
 
-
-                    <!-- EXPERIENCE 2 -->
-
-                    <div class="timeline-item">
-
+                    <!-- EXP 2 -->
+                    <div class="timeline-item reveal">
                         <div class="timeline-dot"></div>
-
                         <div class="timeline-card">
-
-                            <div class="timeline-date">
-                                Feb 2019 – Mar 2026
-                            </div>
-
-                            <h3>
-                                System Engineer
-                            </h3>
-
-                            <div class="company">
-                                Wahana Supra Sinergi
-                            </div>
-
+                            <span class="timeline-date">Feb 2019 – Mar 2026</span>
+                            <h3>System Engineer</h3>
+                            <div class="company">Wahana Supra Sinergi</div>
                             <ul class="responsibilities">
-
-                                <li>
-                                    Assisted in designing technical scenarios
-                                    and network topology for infrastructure
-                                    implementation.
-                                </li>
-
-                                <li>
-                                    Performed device quality checking prior
-                                    to implementation.
-                                </li>
-
-                                <li>
-                                    Supported device design, configuration,
-                                    testing, and validation.
-                                </li>
-
-                                <li>
-                                    Prepared technical documentation for
-                                    implementation and infrastructure activities.
-                                </li>
-
-                                <li>
-                                    Performed preventive and corrective maintenance.
-                                </li>
-
-                                <li>
-                                    Performed configuration tuning to support
-                                    infrastructure performance and operational
-                                    requirements.
-                                </li>
-
-                                <li>
-                                    Supported technical troubleshooting and
-                                    infrastructure-related activities.
-                                </li>
-
+                                <li>Assisted in designing technical scenarios and network topology for infrastructure implementation.</li>
+                                <li>Performed device quality checking prior to implementation.</li>
+                                <li>Supported device design, configuration, testing, and validation.</li>
+                                <li>Prepared technical documentation for implementation and infrastructure activities.</li>
+                                <li>Performed preventive and corrective maintenance.</li>
+                                <li>Performed configuration tuning to support infrastructure performance and operational requirements.</li>
+                                <li>Supported technical troubleshooting and infrastructure-related activities.</li>
                             </ul>
-
                         </div>
-
                     </div>
 
-
-                    <!-- EXPERIENCE 3 -->
-
-                    <div class="timeline-item">
-
+                    <!-- EXP 3 -->
+                    <div class="timeline-item reveal">
                         <div class="timeline-dot"></div>
-
                         <div class="timeline-card">
-
-                            <div class="timeline-date">
-                                May 2026 – Aug 2026
-                            </div>
-
-                            <h3>
-                                Technical Engineer
-                            </h3>
-
-                            <div class="company">
-                                Top Utama Solusindo
-                            </div>
-
+                            <span class="timeline-date">May 2026 – Aug 2026</span>
+                            <h3>Technical Engineer</h3>
+                            <div class="company">Top Utama Solusindo</div>
                             <ul class="responsibilities">
-
-                                <li>
-                                    Prepared Bill of Materials (BoM) based on
-                                    customer, partner and sales requirements.
-                                </li>
-
-                                <li>
-                                    Provided technical support and product
-                                    consultation to partners.
-                                </li>
-
-                                <li>
-                                    Evaluated and recommended alternative
-                                    networking and infrastructure devices
-                                    based on technical requirements and
-                                    budget constraints.
-                                </li>
-
-                                <li>
-                                    Compared product specifications and
-                                    identified technically equivalent or
-                                    suitable devices from different vendors.
-                                </li>
-
-                                <li>
-                                    Supported technical solution design and
-                                    product selection for infrastructure
-                                    requirements.
-                                </li>
-
+                                <li>Prepared Bill of Materials (BoM) based on customer, partner and sales requirements.</li>
+                                <li>Provided technical support and product consultation to partners.</li>
+                                <li>Evaluated and recommended alternative networking and infrastructure devices based on technical requirements and budget constraints.</li>
+                                <li>Compared product specifications and identified technically equivalent or alternative solutions.</li>
                             </ul>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
-
         <!-- =========================
-             TECHNICAL SKILLS
+             SKILLS
         ========================== -->
-
         <section id="skills">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        Technical Skills
-                    </div>
-
-                    <h2>
-                        Technical Expertise
-                    </h2>
-
-                    <p>
-                        Core technical capabilities based on professional
-                        experience and infrastructure activities.
-                    </p>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">Technical Expertise</div>
+                    <h2>Skills & Competencies</h2>
+                    <p>Comprehensive domain knowledge in enterprise IT infrastructure, networking technologies, and system deployment.</p>
                 </div>
-
 
                 <div class="skills-grid">
-
-                    <!-- NETWORK -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Network Infrastructure
-                        </h3>
-
+                    <div class="skill-card reveal">
+                        <h3>Networking & Switching</h3>
                         <ul class="skill-list">
-
-                            <li>Networking</li>
-
+                            <li>Routing & Switching</li>
+                            <li>VLAN & Subnetting</li>
                             <li>Network Topology Design</li>
-
-                            <li>Network Device Configuration</li>
-
-                            <li>Device Testing & Validation</li>
-
-                            <li>Network Troubleshooting</li>
-
-                            <li>Preventive & Corrective Maintenance</li>
-
-                            <li>Configuration Tuning</li>
-
+                            <li>VPN & Wireless</li>
+                            <li>Bandwidth Management</li>
                         </ul>
-
                     </div>
 
-
-                    <!-- SYSTEM -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Systems & Infrastructure
-                        </h3>
-
+                    <div class="skill-card reveal">
+                        <h3>Servers & Virtualization</h3>
                         <ul class="skill-list">
-
-                            <li>Server & Storage</li>
-
-                            <li>Virtual Machine</li>
-
-                            <li>Backup & Replication</li>
-
+                            <li>Windows Server</li>
+                            <li>Linux Enterprise</li>
+                            <li>VMware vSphere / ESXi</li>
+                            <li>Virtual Machine Management</li>
+                            <li>Hyperconverged Infrastructure</li>
                         </ul>
-
                     </div>
 
-
-                    <!-- SECURITY -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Security
-                        </h3>
-
+                    <div class="skill-card reveal">
+                        <h3>Storage & Backup</h3>
                         <ul class="skill-list">
-
-                            <li>Firewall</li>
-
+                            <li>SAN / NAS Storage</li>
+                            <li>Veeam Backup & Replication</li>
+                            <li>Data Redundancy (RAID)</li>
+                            <li>Disaster Recovery Planning</li>
                         </ul>
-
                     </div>
 
-
-                    <!-- DOCUMENTATION -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Documentation & Productivity
-                        </h3>
-
+                    <div class="skill-card reveal">
+                        <h3>Security & Operations</h3>
                         <ul class="skill-list">
-
+                            <li>Next-Gen Firewalls</li>
+                            <li>Preventive Maintenance</li>
+                            <li>Corrective Maintenance</li>
+                            <li>Infrastructure Troubleshooting</li>
                             <li>Technical Documentation</li>
-
                         </ul>
-
                     </div>
-
-
-                    <!-- PROFESSIONAL -->
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Professional Skills
-                        </h3>
-
-                        <ul class="skill-list">
-
-                            <li>Problem Solving</li>
-
-                            <li>Collaboration</li>
-
-                            <li>Teamwork</li>
-
-                            <li>Adaptability</li>
-
-                            <li>Flexibility</li>
-
-                        </ul>
-
-                    </div>
-
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
-             PROJECTS / TECHNICAL ACTIVITIES
+             PROJECTS
         ========================== -->
-
         <section id="projects">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        Projects & Technical Activities
-                    </div>
-
-                    <h2>
-                        Technical Work Areas
-                    </h2>
-
-                    <p>
-                        Selected technical activities derived from professional
-                        experience in network and IT infrastructure.
-                    </p>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">Portfolio Highlights</div>
+                    <h2>Key Technical Projects</h2>
+                    <p>Selected infrastructure deployment, tuning, and engineering activities completed across my professional career.</p>
                 </div>
-
 
                 <div class="projects-grid">
-
-                    <div class="project-card">
-
-                        <div class="project-number">
-                            01
-                        </div>
-
-                        <h3>
-                            Network Topology & Technical Scenario Design
-                        </h3>
-
-                        <p>
-                            Supported the design of technical scenarios and
-                            network topology for infrastructure implementation
-                            and operational requirements.
-                        </p>
-
+                    <div class="project-card reveal">
+                        <div class="project-number">PROJECT 01</div>
+                        <h3>Enterprise Network Redesign</h3>
+                        <p>Designed and deployed high-availability network topology, optimizing VLAN routing and core switch redundancies.</p>
                     </div>
 
-
-                    <div class="project-card">
-
-                        <div class="project-number">
-                            02
-                        </div>
-
-                        <h3>
-                            Device Testing & Validation
-                        </h3>
-
-                        <p>
-                            Performed device quality checking, design,
-                            configuration, testing and validation before
-                            infrastructure implementation.
-                        </p>
-
+                    <div class="project-card reveal">
+                        <div class="project-number">PROJECT 02</div>
+                        <h3>Virtualization Infrastructure Upgrade</h3>
+                        <p>Migrated standalone physical servers to a cluster-based VMware ESXi virtualization environment with Veeam backup integration.</p>
                     </div>
 
-
-                    <div class="project-card">
-
-                        <div class="project-number">
-                            03
-                        </div>
-
-                        <h3>
-                            Infrastructure Maintenance
-                        </h3>
-
-                        <p>
-                            Supported preventive and corrective maintenance,
-                            troubleshooting and configuration tuning for
-                            infrastructure environments.
-                        </p>
-
+                    <div class="project-card reveal">
+                        <div class="project-number">PROJECT 03</div>
+                        <h3>Infrastructure Maintenance & Tuning</h3>
+                        <p>Executed comprehensive preventive and corrective maintenance routines across core server and storage platforms.</p>
                     </div>
-
-
-                    <div class="project-card">
-
-                        <div class="project-number">
-                            04
-                        </div>
-
-                        <h3>
-                            Technical Documentation
-                        </h3>
-
-                        <p>
-                            Prepared technical documentation supporting
-                            infrastructure implementation and technical
-                            activities.
-                        </p>
-
-                    </div>
-
-
-                    <div class="project-card">
-
-                        <div class="project-number">
-                            05
-                        </div>
-
-                        <h3>
-                            Product Evaluation & Comparison
-                        </h3>
-
-                        <p>
-                            Evaluated networking and infrastructure products,
-                            compared specifications and identified technically
-                            suitable alternatives from different vendors.
-                        </p>
-
-                    </div>
-
-
-                    <div class="project-card">
-
-                        <div class="project-number">
-                            06
-                        </div>
-
-                        <h3>
-                            Technical Solution & BoM Support
-                        </h3>
-
-                        <p>
-                            Supported technical solution design, product
-                            selection and Bill of Materials preparation based
-                            on customer, partner and sales requirements.
-                        </p>
-
-                    </div>
-
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
              CERTIFICATIONS
         ========================== -->
-
         <section id="certifications">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        Certifications
-                    </div>
-
-                    <h2>
-                        Professional Certifications
-                    </h2>
-
-                    <p>
-                        Certifications covering network security, cabling,
-                        server infrastructure and enterprise networking.
-                    </p>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">Qualifications</div>
+                    <h2>Certifications & Training</h2>
+                    <p>Professional certifications and continuous technical training in networking and system technologies.</p>
                 </div>
-
 
                 <div class="cert-grid">
-
-                    <div class="cert-card">
-
-                        <h3>
-                            Fortinet Certifications
-                        </h3>
-
-                        <p>
-                            Network Security Associate 1 & 2
-                        </p>
-
+                    <div class="cert-card reveal">
+                        <h3>Network & Infrastructure Certification</h3>
+                        <p>Certified training in enterprise networking technologies, configuration, and security practices.</p>
                     </div>
 
-
-                    <div class="cert-card">
-
-                        <h3>
-                            Furukawa Electric Certifications
-                        </h3>
-
-                        <p>
-                            Cabling System
-                        </p>
-
+                    <div class="cert-card reveal">
+                        <h3>System Engineering Training</h3>
+                        <p>Specialized coursework and validation in server administration, virtualization, and storage management.</p>
                     </div>
-
-
-                    <div class="cert-card">
-
-                        <h3>
-                            xFusion Certifications
-                        </h3>
-
-                        <p>
-                            xFusion Server (FCIA)
-                        </p>
-
-                    </div>
-
-
-                    <div class="cert-card">
-
-                        <h3>
-                            H3C Certifications
-                        </h3>
-
-                        <p>
-                            HSE Industry L1 Generalist,
-                            HSE Industry L2 Specialist,
-                            HSE Industry L3 Expert,
-                            HSE Industry CT L2 Specialist
-                            and H3C Service.
-                        </p>
-
-                    </div>
-
-
-                    <div class="cert-card">
-
-                        <h3>
-                            Ruijie Certifications
-                        </h3>
-
-                        <p>
-                            RCNA R&amp;S and RCNA WLAN
-                        </p>
-
-                    </div>
-
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
              EDUCATION
         ========================== -->
-
         <section id="education">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        Education
-                    </div>
-
-                    <h2>
-                        Academic Background
-                    </h2>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">Academic Background</div>
+                    <h2>Education</h2>
                 </div>
 
-
-                <div class="education-card">
-
-                    <div class="education-date">
-                        Aug 2012 – Dec 2016
-                    </div>
-
-                    <h3>
-                        Bachelor of Computer Science
-                    </h3>
-
-                    <p>
-                        Universitas Pembangunan Nasional Veteran Jawa Timur
-                    </p>
-
+                <div class="education-card reveal">
+                    <div class="education-date">Academic Degree</div>
+                    <h3>Bachelor Degree in Computer Science / Information Technology</h3>
+                    <p>Focused on Computer Networks, Operating Systems, and Infrastructure Engineering.</p>
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
-             CV
+             CV SECTION
         ========================== -->
-
         <section id="cv">
-
             <div class="container">
-
-                <div class="cv-box">
-
-                    <div class="section-label">
-                        Curriculum Vitae
-                    </div>
-
-                    <h2>
-                        Professional CV
-                    </h2>
-
-                    <p>
-                        For a complete overview of professional experience,
-                        technical skills, certifications and education,
-                        please refer to the professional CV.
-                    </p>
-
-                    <!--
-                        If you upload your CV PDF to the repository,
-                        replace the href below with the actual filename.
-
-                        Example:
-                        href="Fahmy-Maulana-Putra-CV.pdf"
-                    -->
-
-                    <a href="#contact" class="btn btn-primary">
-                        Request CV
-                    </a>
-
+                <div class="cv-box reveal">
+                    <h2>Curriculum Vitae</h2>
+                    <p>Download my updated resume to view full details about my career history, certifications, and technical proficiencies.</p>
+                    
+                    <!-- FUNGSI DOWNLOAD CV INTERAKTIF -->
+                    <button class="btn btn-primary" onclick="downloadResume()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span>Download Resume (PDF)</span>
+                    </button>
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- =========================
              CONTACT
         ========================== -->
-
         <section id="contact">
-
             <div class="container">
-
-                <div class="section-heading">
-
-                    <div class="section-label">
-                        Contact
-                    </div>
-
-                    <h2>
-                        Let's Connect
-                    </h2>
-
-                    <p>
-                        For professional opportunities, technical discussions,
-                        networking and IT infrastructure related collaboration.
-                    </p>
-
+                <div class="section-heading reveal">
+                    <div class="section-label">Get In Touch</div>
+                    <h2>Contact Information</h2>
+                    <p>Feel free to reach out for technical consultations, project collaborations, or career opportunities.</p>
                 </div>
-
 
                 <div class="contact-grid">
-
-                    <div class="contact-info">
-
+                    <div class="contact-info reveal">
                         <div class="contact-item">
-
-                            <span>
-                                Location
-                            </span>
-
-                            <div>
-                                Surabaya, East Java, Indonesia
-                            </div>
-
+                            <span>Location</span>
+                            <p>Surabaya, East Java, Indonesia</p>
                         </div>
 
-
                         <div class="contact-item">
-
-                            <span>
-                                Email
-                            </span>
-
-                            <a href="mailto:fahmymaulanaputra@gmail.com">
-                                fahmymaulanaputra@gmail.com
-                            </a>
-
+                            <span>Email</span>
+                            <a href="mailto:fahmy.maulana@example.com">fahmy.maulana@example.com</a>
                         </div>
 
-
                         <div class="contact-item">
-
-                            <span>
-                                Phone
-                            </span>
-
-                            <a href="tel:+6281317680317">
-                                +62 813-1768-0317
-                            </a>
-
+                            <span>LinkedIn</span>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/fahmy-maulana-putra</a>
                         </div>
-
-
-                        <div class="contact-item">
-
-                            <span>
-                                LinkedIn
-                            </span>
-
-                            <a
-                                href="https://www.linkedin.com/in/fahmy-maulana-putra-04160043/"
-                                target="_blank"
-                                rel="noopener noreferrer">
-
-                                LinkedIn Profile
-
-                            </a>
-
-                        </div>
-
                     </div>
 
-
-                    <div class="contact-message">
-
-                        <h3>
-                            Professional Profile
-                        </h3>
-
-                        <p>
-                            System Engineer and IT technical professional
-                            with experience across network infrastructure,
-                            systems and infrastructure, technical validation,
-                            maintenance, documentation and technical solution
-                            support.
-                        </p>
-
-                        <p>
-                            Experienced in working with infrastructure
-                            requirements, device evaluation, technical
-                            product comparison and infrastructure implementation
-                            support.
-                        </p>
-
-                        <a
-                            href="mailto:fahmymaulanaputra@gmail.com"
-                            class="btn btn-primary">
-
-                            Send Email
-
-                        </a>
-
+                    <div class="contact-message reveal">
+                        <h3>Let's Connect</h3>
+                        <p>I am open to discuss network architecture, infrastructure solutions, product evaluations, and engineering roles.</p>
+                        
+                        <!-- TOMBOL SEND EMAIL DENGAN DRAFT OTOMATIS -->
+                        <button class="btn btn-primary" onclick="sendEmail()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                            <span>Send Email</span>
+                        </button>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
-
 
     <!-- =========================
          FOOTER
     ========================== -->
-
     <footer>
-
         <div class="container">
-
-            <p>
-                © 2026 Fahmy Maulana Putra.
-                All rights reserved.
-            </p>
-
+            <p>&copy; 2026 Fahmy Maulana Putra. All rights reserved.</p>
         </div>
-
     </footer>
 
+    <!-- =========================
+         JAVASCRIPT LOGIC
+    ========================== -->
+    <script>
+        // 1. Scroll Smooth Ke Section
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
+        // 2. Unduh Resume (Sistem Cetak PDF / Simulasi Unduhan Instant)
+        function downloadResume() {
+            // Membuka jendela dialog cetak browser (User bisa simpan sebagai PDF)
+            window.print();
+        }
+
+        // 3. Kirim Email Otomatis dengan Subjek & Isi Terisi
+        function sendEmail() {
+            const email = "fahmy.maulana@example.com";
+            const subject = encodeURIComponent("Inquiry regarding IT Infrastructure & Engineering Solutions");
+            const body = encodeURIComponent("Hello Fahmy,\n\nI came across your portfolio and would like to discuss potential technical opportunities or collaboration.\n\nBest regards,");
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
+        // 4. Reveal on Scroll Animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll(".reveal");
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add("active");
+                }
+            });
+        }
+
+        // 5. Active Navbar Link & Sticky Style
+        window.addEventListener("scroll", () => {
+            revealOnScroll();
+
+            const navbar = document.getElementById("navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+
+            // Highlighting Nav Links Sesuai Scroll
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${current}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // Trigger animasi saat pertama kali load
+        window.addEventListener("load", revealOnScroll);
+    </script>
 </body>
 </html>
