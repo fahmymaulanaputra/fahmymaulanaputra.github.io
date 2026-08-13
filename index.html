@@ -782,6 +782,182 @@
                 padding: 35px 20px;
             }
         }
+
+        /* =========================
+           CSS CETAK / PRINT / PDF FORMATTING (RAPI DAN BERSIH)
+        ========================== */
+        @media print {
+            /* Sembunyikan elemen non-dokumen */
+            nav, .hero-buttons, #cv, .contact-message, footer, .eyebrow {
+                display: none !important;
+            }
+
+            /* Reset background & warna ke standar dokumen profesional */
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+                font-size: 10pt !important;
+                line-height: 1.5 !important;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .container {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            section {
+                padding: 20px 0 !important;
+                background: transparent !important;
+                page-break-inside: avoid;
+            }
+
+            /* Tata Letak Header / Hero untuk PDF */
+            .hero {
+                min-height: auto !important;
+                padding: 0 0 20px 0 !important;
+                background: none !important;
+            }
+
+            .hero-grid {
+                display: block !important;
+            }
+
+            .hero h1 {
+                font-size: 22pt !important;
+                color: #0f172a !important;
+                margin-bottom: 5px !important;
+            }
+
+            .hero h1 span {
+                background: none !important;
+                -webkit-text-fill-color: #0284c7 !important;
+                color: #0284c7 !important;
+            }
+
+            .hero-title {
+                font-size: 12pt !important;
+                color: #334155 !important;
+                font-weight: bold !important;
+                margin-bottom: 12px !important;
+            }
+
+            .hero-description {
+                font-size: 10pt !important;
+                color: #475569 !important;
+                margin-bottom: 15px !important;
+            }
+
+            .hero-card {
+                display: none !important;
+            }
+
+            /* Section Headings */
+            .section-heading {
+                margin-bottom: 15px !important;
+            }
+
+            .section-label {
+                color: #0284c7 !important;
+                font-size: 9pt !important;
+            }
+
+            .section-heading h2 {
+                font-size: 15pt !important;
+                color: #0f172a !important;
+                margin-bottom: 5px !important;
+            }
+
+            .section-heading p {
+                font-size: 9.5pt !important;
+                color: #475569 !important;
+            }
+
+            /* Cards & Borders */
+            .about-highlight, .timeline-card, .skill-card, .project-card, .cert-card, .education-card, .contact-item {
+                background: #f8fafc !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                padding: 15px !important;
+                border-radius: 8px !important;
+                page-break-inside: avoid;
+            }
+
+            /* Timeline Experience */
+            .timeline::before {
+                background: #cbd5e1 !important;
+            }
+
+            .timeline-dot {
+                background: #0284c7 !important;
+                border-color: #ffffff !important;
+                box-shadow: none !important;
+            }
+
+            .timeline-card h3 {
+                font-size: 11pt !important;
+                color: #0f172a !important;
+            }
+
+            .company {
+                color: #0284c7 !important;
+                font-size: 9.5pt !important;
+                margin-bottom: 8px !important;
+            }
+
+            .responsibilities li {
+                color: #334155 !important;
+                font-size: 9.5pt !important;
+            }
+
+            .responsibilities li::before {
+                color: #0284c7 !important;
+            }
+
+            /* Skills Grid */
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            .skill-card h3 {
+                font-size: 10.5pt !important;
+                color: #0f172a !important;
+                margin-bottom: 10px !important;
+            }
+
+            .skill-list li {
+                background: #e0f2fe !important;
+                border: 1px solid #bae6fd !important;
+                color: #0369a1 !important;
+                font-size: 8.5pt !important;
+                padding: 4px 8px !important;
+            }
+
+            /* Projects & Contact */
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            .contact-grid {
+                display: flex !important;
+                gap: 15px !important;
+            }
+
+            .contact-item {
+                flex: 1 !important;
+            }
+
+            .contact-item a, .contact-item p {
+                color: #0f172a !important;
+            }
+        }
     </style>
 </head>
 
@@ -823,7 +999,6 @@
                         IT technical professional with 12+ years of experience supporting network and IT infrastructure activities, including network topology design, device quality assessment, device design and testing, technical documentation, preventive and corrective maintenance, configuration tuning, and technical infrastructure support.
                     </p>
 
-                    <!-- TOMBOL INTERAKTIF DI HERO -->
                     <div class="hero-buttons">
                         <button class="btn btn-primary" onclick="scrollToSection('experience')">
                             <span>View Experience</span>
@@ -1110,7 +1285,6 @@
                     <h2>Curriculum Vitae</h2>
                     <p>Download my updated resume to view full details about my career history, certifications, and technical proficiencies.</p>
                     
-                    <!-- FUNGSI DOWNLOAD CV INTERAKTIF -->
                     <button class="btn btn-primary" onclick="downloadResume()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                         <span>Download Resume (PDF)</span>
@@ -1152,7 +1326,6 @@
                         <h3>Let's Connect</h3>
                         <p>I am open to discuss network architecture, infrastructure solutions, product evaluations, and engineering roles.</p>
                         
-                        <!-- TOMBOL SEND EMAIL DENGAN DRAFT OTOMATIS -->
                         <button class="btn btn-primary" onclick="sendEmail()">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
                             <span>Send Email</span>
@@ -1184,13 +1357,12 @@
             }
         }
 
-        // 2. Unduh Resume (Sistem Cetak PDF / Simulasi Unduhan Instant)
+        // 2. Unduh Resume (Panggil Print Dialog dengan Format CSS khusus Print)
         function downloadResume() {
-            // Membuka jendela dialog cetak browser (User bisa simpan sebagai PDF)
             window.print();
         }
 
-        // 3. Kirim Email Otomatis dengan Subjek & Isi Terisi
+        // 3. Kirim Email Otomatis
         function sendEmail() {
             const email = "fahmy.maulana@example.com";
             const subject = encodeURIComponent("Inquiry regarding IT Infrastructure & Engineering Solutions");
@@ -1223,14 +1395,12 @@
                 navbar.classList.remove("scrolled");
             }
 
-            // Highlighting Nav Links Sesuai Scroll
             const sections = document.querySelectorAll("section");
             const navLinks = document.querySelectorAll(".nav-links a");
 
             let current = "";
             sections.forEach((section) => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (pageYOffset >= sectionTop - 150) {
                     current = section.getAttribute("id");
                 }
@@ -1244,7 +1414,6 @@
             });
         });
 
-        // Trigger animasi saat pertama kali load
         window.addEventListener("load", revealOnScroll);
     </script>
 </body>
